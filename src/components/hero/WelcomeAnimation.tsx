@@ -185,7 +185,7 @@ export const WelcomeAnimation = ({ onComplete }: WelcomeAnimationProps) => {
           onClick={onComplete}
           className="absolute top-6 right-6 z-20 px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/25 text-xs text-white/90 font-medium transition-colors backdrop-blur-md cursor-pointer"
         >
-          Lewati
+          Skip
         </button>
       </motion.div>
     </AnimatePresence>

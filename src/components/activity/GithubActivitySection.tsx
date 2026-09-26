@@ -6,10 +6,10 @@ import { useGithubContributions } from '../../hooks/useGithubContributions';
 import { GithubHeatmapGrid } from './GithubHeatmapGrid';
 import { profileData } from '../../data/portfolioData';
 
-const formatIndonesianDateShort = (dateString: string): string => {
+const formatDateShort = (dateString: string): string => {
   const date = new Date(dateString);
   if (isNaN(date.getTime())) return dateString;
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 };
 
@@ -21,7 +21,7 @@ export const GithubActivitySection: React.FC = () => {
   const { data, loading, error, selectedYear, setSelectedYear, stats } = useGithubContributions(username);
 
   const formatYearLabel = (yearKey: string): string => {
-    if (yearKey === 'lastYear') return '1 Tahun Terakhir';
+    if (yearKey === 'lastYear') return 'Last Year';
     return yearKey;
   };
 
@@ -59,15 +59,15 @@ export const GithubActivitySection: React.FC = () => {
         >
           <div className="max-w-2xl">
             <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#8c6239] block mb-2">
-              AKTIVITAS GITHUB
+              GITHUB ACTIVITY
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.08]">
-              Kontribusi &amp; Aktivitas Kode
+              Contributions &amp; Code Activity
             </h2>
           </div>
 
           <p className="max-w-md text-xs sm:text-sm font-medium text-[#475569] leading-relaxed">
-            Rekam jejak commit, kontribusi open source, dan konsistensi pengembangan kode di GitHub.
+            Commit history, open-source contributions, and coding consistency on GitHub.
           </p>
         </motion.div>
 
@@ -93,7 +93,7 @@ export const GithubActivitySection: React.FC = () => {
               </a>
 
               <span className="px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-[11px] sm:text-xs font-mono font-bold text-[#8c6239] shadow-[2px_2px_0px_#0f172a]">
-                {stats.totalContributions.toLocaleString('id-ID')} Kontribusi
+                {stats.totalContributions.toLocaleString('en-US')} Contributions
               </span>
             </div>
 
@@ -123,7 +123,7 @@ export const GithubActivitySection: React.FC = () => {
             {error ? (
               <div className="p-6 rounded-2xl bg-[#fef2f2] border border-[#fecaca] text-center">
                 <p className="text-sm text-[#b91c1c] font-medium">
-                  Gagal memuat data dari GitHub API: {error}
+                  Failed to load data from the GitHub API: {error}
                 </p>
                 <button
                   type="button"
@@ -131,7 +131,7 @@ export const GithubActivitySection: React.FC = () => {
                   className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0f172a] text-white text-xs font-mono font-bold cursor-pointer"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
-                  <span>Coba Lagi</span>
+                  <span>Retry</span>
                 </button>
               </div>
             ) : (
@@ -147,39 +147,39 @@ export const GithubActivitySection: React.FC = () => {
             <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]">
               <div className="flex items-center gap-1.5 sm:gap-2 text-[#8c6239] text-[10px] sm:text-xs font-mono font-bold">
                 <GitCommit className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0284c7]" />
-                <span>TOTAL COMMIT</span>
+                <span>TOTAL COMMITS</span>
               </div>
               <div className="text-xl sm:text-2xl font-black text-[#0f172a] mt-1.5 sm:mt-2">
-                {stats.totalContributions.toLocaleString('id-ID')}
+                {stats.totalContributions.toLocaleString('en-US')}
               </div>
               <span className="text-[10px] sm:text-[11px] text-[#64748b] font-mono mt-0.5 block truncate">
-                periode {formatYearLabel(selectedYear)}
+                {formatYearLabel(selectedYear)}
               </span>
             </div>
 
             <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]">
               <div className="flex items-center gap-1.5 sm:gap-2 text-[#8c6239] text-[10px] sm:text-xs font-mono font-bold">
                 <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ea580c]" />
-                <span>HARI TERAKTIF</span>
+                <span>MOST ACTIVE DAY</span>
               </div>
               <div className="text-xl sm:text-2xl font-black text-[#0f172a] mt-1.5 sm:mt-2 truncate">
-                {stats.maxDay ? `${stats.maxDay.count} Commit` : '-'}
+                {stats.maxDay ? `${stats.maxDay.count} Commits` : '-'}
               </div>
               <span className="text-[10px] sm:text-[11px] text-[#64748b] font-mono mt-0.5 block truncate">
-                {stats.maxDay ? formatIndonesianDateShort(stats.maxDay.date) : 'Tidak ada data'}
+                {stats.maxDay ? formatDateShort(stats.maxDay.date) : 'No data'}
               </span>
             </div>
 
             <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]">
               <div className="flex items-center gap-1.5 sm:gap-2 text-[#8c6239] text-[10px] sm:text-xs font-mono font-bold">
                 <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#16a34a]" />
-                <span>HARI PRODUKTIF</span>
+                <span>ACTIVE DAYS</span>
               </div>
               <div className="text-xl sm:text-2xl font-black text-[#0f172a] mt-1.5 sm:mt-2">
-                {stats.activeDaysCount} Hari
+                {stats.activeDaysCount} Days
               </div>
               <span className="text-[10px] sm:text-[11px] text-[#64748b] font-mono mt-0.5 block truncate">
-                avg {stats.averagePerActiveDay} / hari
+                avg {stats.averagePerActiveDay} / day
               </span>
             </div>
 
@@ -190,13 +190,13 @@ export const GithubActivitySection: React.FC = () => {
               className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#0f172a] hover:bg-[#1e293b] text-white flex flex-col justify-between border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all hover:-translate-y-0.5 group cursor-pointer"
             >
               <div className="flex items-center justify-between text-[10px] sm:text-xs font-mono font-bold text-[#38bdf8]">
-                <span>PROFIL GITHUB</span>
+                <span>GITHUB PROFILE</span>
                 <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
               <div className="mt-1.5 sm:mt-2">
                 <div className="text-sm sm:text-base font-black text-[#f8fafc] truncate">@{username}</div>
                 <span className="text-[10px] sm:text-[11px] text-[#94a3b8] font-mono block truncate">
-                  Buka riwayat repositori &rarr;
+                  View repository history &rarr;
                 </span>
               </div>
             </a>

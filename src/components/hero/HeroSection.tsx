@@ -94,7 +94,7 @@ export const HeroSection: React.FC = () => {
               onClick={handleScrollToProjects}
               icon={<ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
             >
-              Lihat Proyek
+              See Projects
             </TactileButton>
 
             <a

@@ -84,15 +84,15 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                   idx === 0
                     ? 'bg-[#e0f2fe] border-[#0284c7]'
                     : idx === 1
-                    ? 'bg-[#fef9c3] border-[#ca8a04]'
-                    : 'bg-[#dcfce7] border-[#16a34a]';
+                      ? 'bg-[#fef9c3] border-[#ca8a04]'
+                      : 'bg-[#dcfce7] border-[#16a34a]';
 
                 const labelColor =
                   idx === 0
                     ? 'text-[#0369a1]'
                     : idx === 1
-                    ? 'text-[#854d0e]'
-                    : 'text-[#15803d]';
+                      ? 'text-[#854d0e]'
+                      : 'text-[#15803d]';
 
                 return (
                   <div
@@ -129,7 +129,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                 onClick={() => onSelectProject(project)}
                 className="flex items-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-[11px] sm:text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] sm:shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
               >
-                <span>Studi Kasus</span>
+                <span>Case Study</span>
                 <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
 
@@ -192,7 +192,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
 
             <div className="absolute bottom-5 right-5 px-3.5 py-1.5 rounded-xl bg-[#fde047] border-2 border-[#0f172a] text-xs font-mono font-black text-[#0f172a] shadow-[3px_3px_0px_#0f172a] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 pointer-events-none">
               <Layers className="w-3.5 h-3.5" />
-              <span>Buka Arsitektur Sistem</span>
+              <span>Open Architecture</span>
             </div>
           </div>
         </div>

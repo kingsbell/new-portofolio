@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight, Layers } from 'lucide-react';
 import type { Project } from '../../types/portfolio';
+import { PROJECT_CATEGORY_LABELS } from '../../data/projectCategories';
 import { TactileCard } from '../ui/TactileCard';
 
 interface ProjectCardProps {
@@ -8,21 +9,15 @@ interface ProjectCardProps {
   onSelect: (project: Project) => void;
 }
 
+const categoryAccents: Record<Project['category'], string> = {
+  fullstack: 'text-[#2563eb] border-[#2563eb]/40',
+  mobile: 'text-[#0d9488] border-[#0d9488]/40',
+  'reusely-e2e': 'text-[#ea580c] border-[#ea580c]/40',
+  'reusely-api': 'text-[#ea580c] border-[#ea580c]/40',
+  'e2e-sauce-demo': 'text-[#ea580c] border-[#ea580c]/40'
+};
+
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) => {
-  const categoryLabels = {
-    fullstack: 'Full-Stack Web',
-    mobile: 'Mobile Flutter App',
-    qa: 'Quality Assurance',
-    ai: 'AI & Computer Vision'
-  };
-
-  const categoryAccents = {
-    fullstack: 'text-[#2563eb] border-[#2563eb]/40',
-    mobile: 'text-[#0d9488] border-[#0d9488]/40',
-    qa: 'text-[#ea580c] border-[#ea580c]/40',
-    ai: 'text-[#d97706] border-[#d97706]/40'
-  };
-
   return (
     <TactileCard
       onClick={() => onSelect(project)}
@@ -36,7 +31,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
               categoryAccents[project.category]
             }`}
           >
-            {categoryLabels[project.category]}
+            {PROJECT_CATEGORY_LABELS[project.category].label}
           </span>
 
           <span className="text-xs font-mono text-[#94a3b8] group-hover:text-[#f8fafc] flex items-center gap-1 transition-colors">

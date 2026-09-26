@@ -27,7 +27,7 @@ export const ProjectPreviewPlaceholder: React.FC<ProjectPreviewPlaceholderProps>
           <span className="w-3 h-3 rounded-full bg-[#fde047] border border-[#0f172a]" />
           <span className="w-3 h-3 rounded-full bg-[#4ade80] border border-[#0f172a]" />
           <div className="ml-2 px-3 py-0.5 rounded-md bg-[#fffdf5] border border-[#0f172a]/50 text-[11px] font-mono font-bold text-[#0f172a] truncate max-w-[160px] sm:max-w-[240px]">
-            {isMobile ? `app://${project.id}.flutter` : `https://${project.id}.app`}
+            {isMobile ? `app://${project.id}.flutter` : `https://${project.id}.com`}
           </div>
         </div>
 
@@ -44,11 +44,10 @@ export const ProjectPreviewPlaceholder: React.FC<ProjectPreviewPlaceholderProps>
             src={project.imageUrl}
             alt={project.title}
             onError={() => setImageError(true)}
-            className={`w-full h-full ${
-              project.imageFit === 'contain' || isMobile
-                ? 'object-contain object-center p-3 sm:p-4'
-                : 'object-cover object-top'
-            } transition-transform duration-500 group-hover/preview:scale-[1.02]`}
+            className={`w-full h-full ${project.imageFit === 'contain' || isMobile
+              ? 'object-contain object-center p-3 sm:p-4'
+              : 'object-cover object-top'
+              } transition-transform duration-500 group-hover/preview:scale-[1.02]`}
           />
         ) : (
           // fallback placeholder

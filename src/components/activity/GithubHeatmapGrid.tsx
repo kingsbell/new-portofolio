@@ -7,9 +7,9 @@ interface GithubHeatmapGridProps {
   loading: boolean;
 }
 
-const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-const formatIndonesianDate = (dateString: string): string => {
+const formatFullDate = (dateString: string): string => {
   const date = new Date(dateString);
   if (isNaN(date.getTime())) return dateString;
   const day = date.getDate();
@@ -131,10 +131,10 @@ export const GithubHeatmapGrid: React.FC<GithubHeatmapGridProps> = ({ contributi
             className="pointer-events-none absolute z-50 px-3 py-1.5 rounded-xl bg-[#0f172a] text-white text-[11px] font-mono shadow-2xl border border-[#38bdf8]/40 whitespace-nowrap"
           >
             <span className="font-bold text-[#4ade80]">
-              {hoveredCell.count === 0 ? 'Tidak ada kontribusi' : `${hoveredCell.count} kontribusi`}
+              {hoveredCell.count === 0 ? 'No contributions' : `${hoveredCell.count} contributions`}
             </span>
             <span className="text-[#64748b] mx-1.5">•</span>
-            <span className="text-[#cbd5e1]">{formatIndonesianDate(hoveredCell.date)}</span>
+            <span className="text-[#cbd5e1]">{formatFullDate(hoveredCell.date)}</span>
             {/* tooltip caret */}
             <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-[6px] border-t-[#0f172a]" />
           </motion.div>
@@ -159,9 +159,9 @@ export const GithubHeatmapGrid: React.FC<GithubHeatmapGridProps> = ({ contributi
           <div className="flex items-start">
             {/* day of week indicators */}
             <div className="flex flex-col justify-between h-[116px] pr-3 text-[10px] font-mono font-bold text-[#8c6239]">
-              <span>Sen</span>
-              <span>Rab</span>
-              <span>Jum</span>
+              <span>Mon</span>
+              <span>Wed</span>
+              <span>Fri</span>
             </div>
 
             {/* calendar */}
@@ -191,18 +191,18 @@ export const GithubHeatmapGrid: React.FC<GithubHeatmapGridProps> = ({ contributi
       {/* footer */}
       <div className="mt-3.5 sm:mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#64748b] font-mono pt-3 border-t border-[#e8dbc0]">
         <span className="text-[10px] sm:text-[11px] text-[#8c6239] font-medium">
-          Data sinkron otomatis dengan riwayat git GitHub
+          Data synced automatically from GitHub commit history
         </span>
 
         <div className="flex items-center gap-1.5 self-end sm:self-auto">
-          <span className="text-[10px] sm:text-[11px] mr-1 text-[#8c6239]">Sedikit</span>
+          <span className="text-[10px] sm:text-[11px] mr-1 text-[#8c6239]">Less</span>
           {[0, 1, 2, 3, 4].map((level) => (
             <div
               key={level}
               className={`w-3 h-3 rounded-[3px] border ${getBeachLevelColor(level)}`}
             />
           ))}
-          <span className="text-[10px] sm:text-[11px] ml-1 text-[#8c6239]">Banyak</span>
+          <span className="text-[10px] sm:text-[11px] ml-1 text-[#8c6239]">More</span>
         </div>
       </div>
     </div>

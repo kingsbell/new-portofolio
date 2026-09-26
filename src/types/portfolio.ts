@@ -1,4 +1,10 @@
-export type ProjectCategory = 'all' | 'fullstack' | 'mobile' | 'qa';
+export type ProjectCategory =
+  | 'all'
+  | 'fullstack'
+  | 'mobile'
+  | 'reusely-e2e'
+  | 'reusely-api'
+  | 'e2e-sauce-demo';
 
 export interface Project {
   id: string;
@@ -28,7 +34,7 @@ export type TechLayer = 'client' | 'backend' | 'database' | 'devops';
 
 export interface TechItem {
   name: string;
-  category: 'frontend' | 'mobile' | 'backend' | 'tools';
+  category: 'automation' | 'api' | 'tools';
   layer: TechLayer;
   iconKey: string;
   color: string;

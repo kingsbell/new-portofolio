@@ -1,45 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Lock } from 'lucide-react';
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
   SiJavascript,
-  SiTailwindcss,
-  SiFlutter,
-  SiLaravel,
-  SiNodedotjs,
-  SiMysql,
-  SiPostgresql,
-  SiSupabase,
-  SiFirebase,
-  SiPrisma,
-  SiDocker,
-  SiLinux,
+  SiPostman,
+  SiK6,
   SiGit,
-  SiVercel
+  SiClickup
 } from '@icons-pack/react-simple-icons';
 import type { TechItem, TechLayer } from '../../types/portfolio';
 import type { FlowDomainId } from './PipelineFlowPresets';
 
 const iconMap: Record<string, React.FC<{ size?: number; color?: string; className?: string }>> = {
-  react: SiReact,
-  nextdotjs: SiNextdotjs,
-  typescript: SiTypescript,
   javascript: SiJavascript,
-  tailwindcss: SiTailwindcss,
-  flutter: SiFlutter,
-  laravel: SiLaravel,
-  nodejs: SiNodedotjs,
-  mysql: SiMysql,
-  postgresql: SiPostgresql,
-  supabase: SiSupabase,
-  firebase: SiFirebase,
-  prisma: SiPrisma,
-  docker: SiDocker,
-  linux: SiLinux,
+  postman: SiPostman,
+  k6: SiK6,
   git: SiGit,
-  vercel: SiVercel
+  clickup: SiClickup
 };
 
 interface PipelineNodeLayerProps {
@@ -54,6 +31,7 @@ interface PipelineNodeLayerProps {
   onSelectTech: (tech: TechItem) => void;
   onSelectLayer: (layerId: TechLayer) => void;
   isLayerSelected: boolean;
+  isComingSoon?: boolean;
 }
 
 export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
@@ -67,15 +45,16 @@ export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
   selectedTech,
   onSelectTech,
   onSelectLayer,
-  isLayerSelected
+  isLayerSelected,
+  isComingSoon = false
 }) => {
-  // check if layer matches active domain filter
+  // check if layer matches active domain filter (coming-soon layers are always locked)
   const isLayerActiveInDomain =
-    activeDomain === 'all' ||
-    (activeDomain === 'web' && layerId === 'client') ||
-    (activeDomain === 'mobile' && layerId === 'client') ||
-    (activeDomain === 'backend' && (layerId === 'backend' || layerId === 'database')) ||
-    (activeDomain === 'devops' && layerId === 'devops');
+    !isComingSoon &&
+    (activeDomain === 'all' ||
+      (activeDomain === 'automation' && layerId === 'client') ||
+      (activeDomain === 'api' && layerId === 'backend') ||
+      (activeDomain === 'tools' && layerId === 'devops'));
 
   const handleInspectClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -98,7 +77,9 @@ export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
       }}
       className={`p-6 sm:p-7 rounded-[28px] border-2 transition-all duration-300 relative flex flex-col justify-between ${
         !isLayerActiveInDomain
-          ? 'bg-[#f1f5f9]/70 border-dashed border-[#94a3b8] opacity-35 grayscale pointer-events-none cursor-not-allowed select-none shadow-none'
+          ? `bg-[#f1f5f9]/70 border-dashed border-[#94a3b8] pointer-events-none cursor-not-allowed select-none shadow-none ${
+              isComingSoon ? 'opacity-60' : 'opacity-35 grayscale'
+            }`
           : isLayerSelected
           ? 'bg-[#fffdf5] border-[#0f172a] shadow-[8px_8px_0px_#0f172a] ring-3 ring-[#0284c7] cursor-pointer'
           : 'bg-[#fffdf5] border-[#0f172a] shadow-[6px_6px_0px_#0f172a] cursor-pointer hover:border-[#0284c7]'
@@ -127,7 +108,7 @@ export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
           </div>
 
           <div
-            className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-lg border ${
+            className={`flex items-center gap-1 text-[10px] font-mono font-bold px-2 py-0.5 rounded-lg border ${
               !isLayerActiveInDomain
                 ? 'bg-[#e2e8f0] text-[#94a3b8] border-[#cbd5e1]'
                 : isLayerSelected
@@ -135,11 +116,16 @@ export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
                 : 'bg-[#dcfce7] text-[#15803d] border-[#16a34a]'
             }`}
           >
-            {!isLayerActiveInDomain
-              ? 'NONAKTIF'
-              : isLayerSelected
-              ? 'DIPILIH'
-              : 'AKTIF'}
+            {isComingSoon && <Lock className="w-2.5 h-2.5" />}
+            <span>
+              {isComingSoon
+                ? 'COMING SOON'
+                : !isLayerActiveInDomain
+                ? 'INACTIVE'
+                : isLayerSelected
+                ? 'SELECTED'
+                : 'ACTIVE'}
+            </span>
           </div>
         </div>
 
@@ -163,14 +149,18 @@ export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
 
         {/* tools list */}
         <div className="mt-5 flex flex-wrap gap-2">
+          {isComingSoon && techItems.length === 0 && (
+            <p className="text-xs font-medium text-[#94a3b8] leading-relaxed">
+              Currently learning - not yet part of the active stack.
+            </p>
+          )}
           {techItems.map((tech) => {
             const Icon = iconMap[tech.iconKey];
             const isToolActive =
               activeDomain === 'all' ||
-              (activeDomain === 'web' && tech.category === 'frontend') ||
-              (activeDomain === 'mobile' && tech.category === 'mobile') ||
-              (activeDomain === 'backend' && tech.category === 'backend') ||
-              (activeDomain === 'devops' && tech.category === 'tools');
+              (activeDomain === 'automation' && tech.category === 'automation') ||
+              (activeDomain === 'api' && tech.category === 'api') ||
+              (activeDomain === 'tools' && tech.category === 'tools');
 
             const isToolSelected = isLayerActiveInDomain && selectedTech?.name === tech.name;
 
@@ -235,18 +225,20 @@ export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
 
       {/* layer inspection trigger */}
       <div className="mt-6 pt-3 border-t border-[#0f172a]/10 flex items-center justify-between text-[11px] font-mono text-[#64748b]">
-        <span>{techItems.length} Tools</span>
+        <span>{isComingSoon ? 'Coming Soon' : `${techItems.length} Tools`}</span>
         {isLayerActiveInDomain ? (
           <button
             type="button"
             onClick={handleInspectClick}
             className="px-3 py-1 rounded-lg bg-[#faeed1] hover:bg-[#fde047] text-[#0f172a] font-bold border border-[#0f172a] transition-colors cursor-pointer flex items-center gap-1"
           >
-            <span>Detail Layer</span>
+            <span>View Layer</span>
             <span>&rarr;</span>
           </button>
         ) : (
-          <span className="text-[#94a3b8]">Nonaktif</span>
+          <span className="text-[#94a3b8]">
+            {isComingSoon ? 'In preparation' : 'Inactive'}
+          </span>
         )}
       </div>
     </motion.div>

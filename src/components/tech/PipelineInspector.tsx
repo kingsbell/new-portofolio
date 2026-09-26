@@ -3,60 +3,30 @@ import { motion } from 'framer-motion';
 import {
   Code2,
   CheckCircle2,
-  ArrowUpRight,
-  ShieldAlert,
-  Lock,
-  Terminal,
-  Activity
+  ArrowUpRight
 } from 'lucide-react';
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
   SiJavascript,
-  SiTailwindcss,
-  SiFlutter,
-  SiLaravel,
-  SiNodedotjs,
-  SiMysql,
-  SiPostgresql,
-  SiSupabase,
-  SiFirebase,
-  SiPrisma,
-  SiDocker,
-  SiLinux,
+  SiPostman,
+  SiK6,
   SiGit,
-  SiVercel
+  SiClickup
 } from '@icons-pack/react-simple-icons';
 import type { TechItem, TechLayer } from '../../types/portfolio';
 import { projectsData } from '../../data/portfolioData';
 import { PROJECT_CATEGORY_LABELS } from '../../data/projectCategories';
-import type { FlowDomainId } from './PipelineFlowPresets';
 
 const iconMap: Record<string, React.FC<{ size?: number; color?: string; className?: string }>> = {
-  react: SiReact,
-  nextdotjs: SiNextdotjs,
-  typescript: SiTypescript,
   javascript: SiJavascript,
-  tailwindcss: SiTailwindcss,
-  flutter: SiFlutter,
-  laravel: SiLaravel,
-  nodejs: SiNodedotjs,
-  mysql: SiMysql,
-  postgresql: SiPostgresql,
-  supabase: SiSupabase,
-  firebase: SiFirebase,
-  prisma: SiPrisma,
-  docker: SiDocker,
-  linux: SiLinux,
+  postman: SiPostman,
+  k6: SiK6,
   git: SiGit,
-  vercel: SiVercel
+  clickup: SiClickup
 };
 
 interface PipelineInspectorProps {
   selectedTech: TechItem | null;
   selectedLayer: TechLayer;
-  activeDomain: FlowDomainId;
   onClearTechSelection: () => void;
   onSelectProject: (projectId: string) => void;
 }
@@ -72,153 +42,62 @@ const layerDetailsMap: Record<
   }
 > = {
   client: {
-    title: 'Frontend & Web Client',
-    subtitle: 'Web & Mobile',
+    title: 'Test Automation',
+    subtitle: 'Playwright & Scripting',
     description:
-      'Pengembangan antarmuka web dan mobile menggunakan React, TypeScript, dan Flutter dengan fokus pada interaktivitas dan performa yang responsif.',
+      'Building and maintaining end-to-end test suites with Playwright, using the Page Object Model to keep locators, page services, and specs cleanly separated.',
     guarantees: [
-      'Type-safe props & contracts',
-      'Aplikasi Android & iOS',
-      'Desain responsif modern'
+      'Page Object Model structure',
+      'Cross-browser E2E coverage',
+      'Reusable locators & services'
     ],
-    role: 'Frontend & Mobile'
+    role: 'Test Automation'
   },
   backend: {
-    title: 'Backend & Server',
-    subtitle: 'Server & API',
+    title: 'API & Performance Testing',
+    subtitle: 'API & Load',
     description:
-      'Pengembangan arsitektur backend menggunakan Laravel dan Node.js untuk menangani REST API, routing, dan komunikasi data real-time.',
+      'Validating REST API contracts with Postman collections and load-testing critical endpoints with k6 to catch regressions before release.',
     guarantees: [
-      'Penanganan transaksi database',
-      'Komunikasi WebSockets',
-      'Otentikasi aman & API tokens'
+      'Endpoint & contract validation',
+      'Load & performance benchmarks',
+      'Multi-environment test runs'
     ],
-    role: 'Backend Engineering'
+    role: 'API & Performance'
   },
   database: {
-    title: 'Database & Penyimpanan',
-    subtitle: 'Relational & NoSQL',
+    title: 'SQL Testing',
+    subtitle: 'Coming Soon',
     description:
-      'Pengelolaan basis data relasional PostgreSQL & MySQL, serta database cloud Firestore dan Supabase dengan sinkronisasi real-time.',
+      'Database query validation and data integrity testing. Currently being learned and not yet part of the active QA stack.',
     guarantees: [
-      'Migrasi skema via Prisma',
-      'Sinkronisasi real-time NoSQL',
-      'Query terindeks dan teroptimasi'
+      'Query-based data validation',
+      'Backend state verification',
+      'Data integrity checks'
     ],
-    role: 'Database & Storage'
+    role: 'SQL Testing (Coming Soon)'
   },
   devops: {
-    title: 'DevOps & Lingkungan Kerja',
-    subtitle: 'Linux & Deployment',
+    title: 'Workflow & Tools',
+    subtitle: 'Process & Tracking',
     description:
-      'Alur kerja pengembangan berbasis sistem operasi Linux, isolasi aplikasi dengan Docker, manajemen kode dengan Git, dan hosting edge Vercel.',
+      'Managing test suite versioning with Git and tracking sprint work, bug reports, and release readiness in ClickUp.',
     guarantees: [
-      'Lingkungan kontainer Docker',
-      'Branching & version control Git',
-      'Automasi terminal Unix'
+      'Version-controlled test suites',
+      'Sprint & bug tracking',
+      'Release readiness checks'
     ],
-    role: 'DevOps & Tools'
+    role: 'Workflow & Tools'
   }
 };
 
 export const PipelineInspector: React.FC<PipelineInspectorProps> = ({
   selectedTech,
   selectedLayer,
-  activeDomain,
   onClearTechSelection,
   onSelectProject
 }) => {
   const layerInfo = layerDetailsMap[selectedLayer];
-
-  // special view when cyber security filter is clicked
-  if (activeDomain === 'cybersecurity') {
-    return (
-      <motion.div
-        id="pipeline-inspector"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.25 }}
-        className="p-7 sm:p-9 rounded-[32px] bg-[#fffdf5] border-2 border-[#0f172a] shadow-[8px_8px_0px_#0f172a] space-y-6 select-none"
-      >
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-[#0f172a]/10">
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl border-2 border-[#0f172a] flex items-center justify-center shadow-[3px_3px_0px_#0f172a] bg-[#fee2e2] text-[#dc2626]">
-              <ShieldAlert className="w-8 h-8" />
-            </div>
-
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl sm:text-3xl font-black text-[#0f172a] tracking-tight">
-                  Cyber Security
-                </span>
-                <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-lg bg-[#fee2e2] text-[#dc2626] border border-[#dc2626]">
-                  COMING SOON
-                </span>
-              </div>
-
-              <div className="text-xs font-mono text-[#0284c7] font-bold mt-0.5">
-                Riset & Eksplorasi Keamanan Siber
-              </div>
-            </div>
-          </div>
-
-          <div className="px-3.5 py-1.5 rounded-xl bg-[#fee2e2] border border-[#dc2626] text-xs font-mono font-bold text-[#dc2626] self-start sm:self-auto flex items-center gap-1.5">
-            <Activity className="w-3.5 h-3.5" />
-            <span>Tahap Persiapan</span>
-          </div>
-        </div>
-
-        {/* security exploration description */}
-        <div className="space-y-2">
-          <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#64748b]">
-            Fokus Eksplorasi
-          </div>
-          <p className="text-sm sm:text-base text-[#1e293b] font-medium leading-relaxed bg-[#fff9d4]/60 p-4 rounded-2xl border border-[#0f172a]/20">
-            Bidang keamanan siber yang sedang dipersiapkan mencakup Web Application Security (OWASP Top 10), Network Traffic Analysis, Capture The Flag (CTF), dan Linux System Security.
-          </p>
-        </div>
-
-        {/* security toolkit cards */}
-        <div className="space-y-3 pt-2">
-          <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#0369a1]">
-            Domain yang Dipersiapkan
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="p-4 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-1">
-              <div className="flex items-center gap-2 text-xs font-mono font-black text-[#0f172a]">
-                <Lock className="w-4 h-4 text-[#dc2626]" />
-                <span>Web App Security</span>
-              </div>
-              <p className="text-xs text-[#475569] font-medium">
-                Vulnerability testing, pencegahan XSS/SQLi, dan audit otentikasi.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-1">
-              <div className="flex items-center gap-2 text-xs font-mono font-black text-[#0f172a]">
-                <Terminal className="w-4 h-4 text-[#0284c7]" />
-                <span>Network Analysis</span>
-              </div>
-              <p className="text-xs text-[#475569] font-medium">
-                Port scanning, inspeksi paket jaringan, dan firewall.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-1">
-              <div className="flex items-center gap-2 text-xs font-mono font-black text-[#0f172a]">
-                <Activity className="w-4 h-4 text-[#16a34a]" />
-                <span>Linux Security</span>
-              </div>
-              <p className="text-xs text-[#475569] font-medium">
-                Hardening izin sistem, manajemen SSH, dan isolasi proses.
-              </p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
 
   // specific technology inspection view
   if (selectedTech) {
@@ -260,7 +139,7 @@ export const PipelineInspector: React.FC<PipelineInspectorProps> = ({
               </div>
 
               <div className="text-xs font-mono text-[#0284c7] font-bold mt-0.5">
-                Kategori: {layerInfo.title}
+                Category: {layerInfo.title}
               </div>
             </div>
           </div>
@@ -270,14 +149,14 @@ export const PipelineInspector: React.FC<PipelineInspectorProps> = ({
             onClick={onClearTechSelection}
             className="self-start sm:self-auto px-3.5 py-1.5 rounded-xl bg-[#faeed1] hover:bg-[#fde047] text-xs font-mono font-bold text-[#0f172a] border border-[#0f172a] transition-colors cursor-pointer"
           >
-            &larr; Lihat Detail Kategori
+            &larr; View Category Details
           </button>
         </div>
 
         {/* usage context */}
         <div className="space-y-2">
           <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#64748b]">
-            Penggunaan
+            Usage
           </div>
           <p className="text-sm sm:text-base text-[#1e293b] font-medium leading-relaxed bg-[#fff9d4]/60 p-4 rounded-2xl border border-[#0f172a]/20">
             {selectedTech.usageContext}
@@ -288,10 +167,10 @@ export const PipelineInspector: React.FC<PipelineInspectorProps> = ({
         <div className="space-y-3 pt-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0369a1]">
-              Digunakan di Proyek
+              Used In Projects
             </span>
             <span className="text-[11px] font-mono text-[#64748b]">
-              {relatedProjects.length} Proyek Terkait
+              {relatedProjects.length} Related Projects
             </span>
           </div>
 
@@ -340,7 +219,7 @@ export const PipelineInspector: React.FC<PipelineInspectorProps> = ({
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-1 rounded-xl bg-[#0284c7] text-white text-xs font-mono font-black border border-[#0f172a]">
-              DETAIL KATEGORI
+              CATEGORY DETAIL
             </span>
             <span className="text-xs font-mono font-bold text-[#64748b] uppercase">
               {layerInfo.role}
@@ -363,7 +242,7 @@ export const PipelineInspector: React.FC<PipelineInspectorProps> = ({
       {/* engineering focus */}
       <div className="space-y-2.5 pt-1">
         <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#0369a1]">
-          Fokus Utama
+          Key Focus
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

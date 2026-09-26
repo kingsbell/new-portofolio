@@ -113,7 +113,7 @@ export const JourneyTimeline: React.FC = () => {
               Milestone
             </h2>
             <p className="text-xs sm:text-base font-medium text-[#475569] max-w-2xl leading-relaxed">
-              Pendidikan sarjana informatika, program bootcamp intensif, inisiatif mandiri, dan eksplorasi keamanan siber.
+              Formal education in informatics engineering, an intensive QA bootcamp, and hands-on quality assurance experience in the industry.
             </p>
           </div>
         </motion.div>
@@ -196,7 +196,7 @@ export const JourneyTimeline: React.FC = () => {
                   {item.highlights && item.highlights.length > 0 && (
                     <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#fff9d4]/80 border border-[#0f172a]/20 sm:border-2 sm:border-[#0f172a]/15 space-y-1.5 sm:space-y-2">
                       <div className="text-[10px] sm:text-[11px] font-mono font-black uppercase tracking-wider text-[#475569]">
-                        Poin Kunci &amp; Spesialisasi
+                        Key Highlights
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
                         {item.highlights.map((hl, hIdx) => (

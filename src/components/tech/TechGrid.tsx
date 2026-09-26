@@ -27,11 +27,12 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
     setSelectedTech(null);
 
     // automatically shift inspection layer to the primary active layer for that domain
-    if (domain === 'web' || domain === 'mobile') {
+    // (SQL Testing is a coming-soon layer and is never selectable here)
+    if (domain === 'automation') {
       setSelectedLayer('client');
-    } else if (domain === 'backend') {
+    } else if (domain === 'api') {
       setSelectedLayer('backend');
-    } else if (domain === 'devops') {
+    } else if (domain === 'tools') {
       setSelectedLayer('devops');
     }
   };
@@ -72,7 +73,7 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
                 Tech Stack & Tools
               </h2>
               <p className="text-sm sm:text-base font-medium text-[#475569] mt-2 max-w-2xl leading-relaxed">
-                Teknologi dan tools yang saya gunakan untuk membangun aplikasi web dan mobile.
+                Tools and technologies I use for test automation, API and performance testing, and QA workflows.
               </p>
             </div>
 
@@ -96,10 +97,10 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
         {/* architecture layer cards */}
         <div className="mt-8 sm:mt-10 space-y-3 sm:space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] sm:text-xs font-mono font-bold text-[#64748b] uppercase tracking-wider pb-1 sm:pb-0">
-            <span>Daftar Kategori &amp; Layer</span>
+            <span>Categories &amp; Layers</span>
             <span className="text-[10px] sm:text-xs text-[#64748b]">
-              <span className="sm:hidden">Tap kartu atau icon untuk detail</span>
-              <span className="hidden sm:inline">Klik kartu atau icon untuk melihat detail</span>
+              <span className="sm:hidden">Tap a card or icon for details</span>
+              <span className="hidden sm:inline">Click a card or icon to see details</span>
             </span>
           </div>
 
@@ -108,9 +109,9 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
             <PipelineNodeLayer
               layerId="client"
               stepNumber="01"
-              title="Frontend & Web"
-              subtitle="Client UI"
-              roleDescription="Pengembangan antarmuka web modern dan aplikasi mobile cross-platform."
+              title="Test Automation"
+              subtitle="Automation Framework"
+              roleDescription="End-to-end and UI test automation with Playwright, structured with the Page Object Model."
               techItems={clientTech}
               activeDomain={activeDomain}
               selectedTech={selectedTech}
@@ -123,9 +124,9 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
             <PipelineNodeLayer
               layerId="backend"
               stepNumber="02"
-              title="Backend"
-              subtitle="Server & API"
-              roleDescription="Pengembangan server, REST API, dan integrasi backend."
+              title="API & Performance Testing"
+              subtitle="API & Load"
+              roleDescription="API contract validation with Postman and load testing critical endpoints with k6."
               techItems={backendTech}
               activeDomain={activeDomain}
               selectedTech={selectedTech}
@@ -138,24 +139,25 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
             <PipelineNodeLayer
               layerId="database"
               stepNumber="03"
-              title="Database"
-              subtitle="Data & Storage"
-              roleDescription="Pengelolaan data relasional dan database cloud real-time."
+              title="SQL Testing"
+              subtitle="Coming Soon"
+              roleDescription="Database query validation and data integrity testing - currently being learned, not yet part of the active stack."
               techItems={databaseTech}
               activeDomain={activeDomain}
               selectedTech={selectedTech}
               onSelectTech={handleSelectTech}
               onSelectLayer={handleSelectLayer}
               isLayerSelected={selectedLayer === 'database'}
+              isComingSoon
             />
 
             {/* devops layer */}
             <PipelineNodeLayer
               layerId="devops"
               stepNumber="04"
-              title="DevOps & Tools"
-              subtitle="Environment"
-              roleDescription="Sistem operasi Linux, kontainer Docker, dan deployment."
+              title="Workflow & Tools"
+              subtitle="Process & Tracking"
+              roleDescription="Version-controlled test suites in Git, with sprint and bug tracking in ClickUp."
               techItems={devopsTech}
               activeDomain={activeDomain}
               selectedTech={selectedTech}
@@ -171,7 +173,6 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
           <PipelineInspector
             selectedTech={selectedTech}
             selectedLayer={selectedLayer}
-            activeDomain={activeDomain}
             onClearTechSelection={() => setSelectedTech(null)}
             onSelectProject={handleSelectProject}
           />

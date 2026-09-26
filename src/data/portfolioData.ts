@@ -25,163 +25,51 @@ export const profileData: ProfileData = {
 };
 
 export const techStackData: TechItem[] = [
-  // client interface layer
+  // test automation layer
   {
-    name: 'TypeScript',
-    category: 'frontend',
+    name: 'Playwright',
+    category: 'automation',
     layer: 'client',
-    iconKey: 'typescript',
-    color: '#3178C6',
-    roleTag: 'Type Contracts',
-    usageContext: 'Type-safe contracts across full-stack applications and component props',
-    projectLinks: ['cimart', 'kalorin-ai']
-  },
-  {
-    name: 'React',
-    category: 'frontend',
-    layer: 'client',
-    iconKey: 'react',
-    color: '#0284c7',
-    roleTag: 'Component UI',
-    usageContext: 'Component-driven UI, state management, custom hooks, and interactive flows',
-    projectLinks: ['cimart', 'kalorin-ai']
-  },
-  {
-    name: 'Next.js',
-    category: 'frontend',
-    layer: 'client',
-    iconKey: 'nextdotjs',
-    color: '#0f172a',
-    roleTag: 'App Framework',
-    usageContext: 'Server-side rendering, static generation, and edge routing',
-    projectLinks: ['cimart']
-  },
-  {
-    name: 'Flutter',
-    category: 'mobile',
-    layer: 'client',
-    iconKey: 'flutter',
-    color: '#0284c7',
-    roleTag: 'Native Mobile',
-    usageContext: 'Cross-platform native mobile apps for iOS and Android with 60fps reactive UI',
-    projectLinks: ['villanakey']
-  },
-  {
-    name: 'Tailwind CSS v4',
-    category: 'frontend',
-    layer: 'client',
-    iconKey: 'tailwindcss',
-    color: '#06b6d4',
-    roleTag: 'Design Tokens',
-    usageContext: 'Modern utility-first styling, design tokens, and fluid responsive layouts',
-    projectLinks: ['cimart', 'kalorin-ai']
+    iconKey: 'playwright',
+    color: '#2EAD33',
+    roleTag: 'E2E Automation',
+    usageContext: 'End-to-end test suites with the Page Object Model, covering UI flows across browsers',
+    projectLinks: ['reusely', 'e2e-sauce-demo']
   },
   {
     name: 'JavaScript',
-    category: 'frontend',
+    category: 'automation',
     layer: 'client',
     iconKey: 'javascript',
     color: '#eab308',
-    roleTag: 'Scripting Core',
-    usageContext: 'Core web scripting, DOM events, and asynchronous event loops',
-    projectLinks: ['cimart']
+    roleTag: 'Test Scripting',
+    usageContext: 'Writing Playwright specs, locators, and reusable page service classes',
+    projectLinks: ['e2e-sauce-demo']
   },
 
-  // backend engine layer
+  // API and performance testing layer
   {
-    name: 'Laravel',
-    category: 'backend',
+    name: 'Postman',
+    category: 'api',
     layer: 'backend',
-    iconKey: 'laravel',
-    color: '#ef4444',
-    roleTag: 'MVC & REST Engine',
-    usageContext: 'Robust REST APIs, Inertia backend routing, authentication, and transaction handling',
-    projectLinks: ['cimart']
+    iconKey: 'postman',
+    color: '#FF6C37',
+    roleTag: 'API Validation',
+    usageContext: 'API request collections, environment variables, and endpoint contract validation',
+    projectLinks: ['reusely-api-testing']
   },
   {
-    name: 'Node.js',
-    category: 'backend',
+    name: 'k6',
+    category: 'api',
     layer: 'backend',
-    iconKey: 'nodejs',
-    color: '#22c55e',
-    roleTag: 'Server Runtime',
-    usageContext: 'High-throughput microservices, real-time WebSockets, and build automation tooling',
-    projectLinks: ['kalorin-ai']
+    iconKey: 'k6',
+    color: '#7D64FF',
+    roleTag: 'Load Testing',
+    usageContext: 'Load and performance testing of API endpoints to check behavior under traffic',
+    projectLinks: ['reusely', 'reusely-api-testing']
   },
 
-  // database and cloud persistence layer
-  {
-    name: 'PostgreSQL',
-    category: 'backend',
-    layer: 'database',
-    iconKey: 'postgresql',
-    color: '#2563eb',
-    roleTag: 'Relational Core',
-    usageContext: 'Relational data modeling, complex queries, indexing, and transactional integrity',
-    projectLinks: ['kalorin-ai']
-  },
-  {
-    name: 'Supabase',
-    category: 'backend',
-    layer: 'database',
-    iconKey: 'supabase',
-    color: '#10b981',
-    roleTag: 'Cloud Postgres & Auth',
-    usageContext: 'Managed Postgres backend, row-level security policies, real-time subscriptions, and auth',
-    projectLinks: ['kalorin-ai']
-  },
-  {
-    name: 'MySQL',
-    category: 'backend',
-    layer: 'database',
-    iconKey: 'mysql',
-    color: '#0284c7',
-    roleTag: 'Transactional DB',
-    usageContext: 'E-commerce relational database schemas, ACID transactions, and optimized indexing',
-    projectLinks: ['cimart']
-  },
-  {
-    name: 'Firebase',
-    category: 'backend',
-    layer: 'database',
-    iconKey: 'firebase',
-    color: '#f59e0b',
-    roleTag: 'NoSQL & Real-Time Sync',
-    usageContext: 'Cloud Firestore real-time calendar syncing, FCM push notifications, and Auth',
-    projectLinks: ['villanakey', 'cimart']
-  },
-  {
-    name: 'Prisma ORM',
-    category: 'backend',
-    layer: 'database',
-    iconKey: 'prisma',
-    color: '#6366f1',
-    roleTag: 'Type-Safe ORM',
-    usageContext: 'Type-safe database migrations, declarative schema modeling, and optimized queries',
-    projectLinks: ['kalorin-ai']
-  },
-
-  // infrastructure and devops layer
-  {
-    name: 'Linux',
-    category: 'tools',
-    layer: 'devops',
-    iconKey: 'linux',
-    color: '#eab308',
-    roleTag: 'System OS',
-    usageContext: 'Primary Unix environment, Bash scripting, system service management, and workflow',
-    projectLinks: ['cimart', 'villanakey', 'kalorin-ai']
-  },
-  {
-    name: 'Docker',
-    category: 'tools',
-    layer: 'devops',
-    iconKey: 'docker',
-    color: '#0284c7',
-    roleTag: 'Containerization',
-    usageContext: 'Containerized deployment, multi-stage builds, and consistent staging environments',
-    projectLinks: ['cimart']
-  },
+  // workflow and tooling layer
   {
     name: 'Git',
     category: 'tools',
@@ -189,18 +77,18 @@ export const techStackData: TechItem[] = [
     iconKey: 'git',
     color: '#f97316',
     roleTag: 'Version Control',
-    usageContext: 'Version control, feature branching workflows, code reviews, and CI/CD pipelines',
-    projectLinks: ['cimart', 'villanakey', 'kalorin-ai']
+    usageContext: 'Version control for test suites, branching, and collaboration with engineering teams',
+    projectLinks: ['reusely', 'reusely-api-testing', 'e2e-sauce-demo']
   },
   {
-    name: 'Vercel',
+    name: 'ClickUp',
     category: 'tools',
     layer: 'devops',
-    iconKey: 'vercel',
-    color: '#0f172a',
-    roleTag: 'Edge Deployment',
-    usageContext: 'Edge deployment, continuous integration, and global CDN delivery for web apps',
-    projectLinks: ['kalorin-ai']
+    iconKey: 'clickup',
+    color: '#7B68EE',
+    roleTag: 'Sprint Tracking',
+    usageContext: 'Bug reporting, sprint planning, and tracking QA tasks alongside the engineering team',
+    projectLinks: ['reusely', 'reusely-api-testing']
   }
 ];
 
@@ -209,11 +97,11 @@ export const projectsData: Project[] = [
     id: 'reusely',
     title: 'Reusely',
     subtitle: 'QA Automation for the Reusely.com Recommerce Platform',
-    category: 'qa',
-    summary: 'Safeguarding quality across every Reusely app, a recommerce platform for buying, selling, and trading in used devices, with 1200+ automated test cases.',
+    category: 'reusely-e2e',
+    summary: 'Safeguarding quality across every Reusely app, a recommerce platform for buying, selling, and trading in used devices, with 100+ automated test cases.',
     description: 'Working as a QA Engineer at Reusely since June 2025, responsible for testing the entire application suite. From end-to-end automation, API testing, and load testing to bug reporting, all of it runs inside the sprint cycle alongside the engineering team.',
     architecture: [
-      'Playwright end-to-end suite covering every app with 1200+ test cases',
+      'Playwright end-to-end suite covering every app with 100+ test cases',
       'API testing and validation with Postman collections',
       'Load testing with k6 to measure endpoint performance',
       'Test suite versioned in Git alongside the application repositories',
@@ -221,7 +109,7 @@ export const projectsData: Project[] = [
     ],
     stack: ['Playwright', 'Postman', 'k6', 'Git', 'ClickUp'],
     highlights: [
-      'Automated testing across all apps with 1200+ test cases',
+      'Automated testing across all apps with 100+ test cases',
       'Found, reproduced, and reported bugs through to verified fixes',
       'Actively involved in every sprint, from planning to release testing'
     ],
@@ -234,159 +122,121 @@ export const projectsData: Project[] = [
     imageFit: 'cover',
     featured: true,
     metrics: [
-      { label: 'Test Cases', value: '1200+ Automated' },
+      { label: 'Test Cases', value: '100+ Automated' },
       { label: 'E2E Framework', value: 'Playwright' },
-      { label: 'Workflow', value: 'Sprint · ClickUp' }
+      { label: 'Workflow', value: 'Sprint' }
     ]
   },
   {
-    id: 'villanakey',
-    title: 'villaNaKey',
-    subtitle: 'Aplikasi Mobile Booking & Manajemen Reservasi Villa Keluarga',
-    category: 'mobile',
-    summary: 'Aplikasi mobile booking khusus untuk mendukung operasional bisnis hospitality villa pribadi keluarga dengan sinkronisasi kalender real-time tanpa risiko double-booking.',
-    description: 'Dikembangkan sebagai proyek akhir kampus untuk mendigitalisasi pemesanan villa keluarga, mengeliminasi risiko double-booking, dan mempermudah pengecekan jadwal reservasi bagi pengelola dan tamu.',
+    id: 'reusely-api-testing',
+    title: 'Reusely API Testing',
+    subtitle: 'Postman Test Suite for the Reusely Partner API V2',
+    category: 'reusely-api',
+    summary: 'API testing for the Reusely Partner API, the integration layer that lets business partners run device buyback and trade-in flows end to end.',
+    description: 'A Postman collection covering 25+ endpoints of the Reusely API V2, from partner accounts and store locations to catalog data, offer checkout, and lead management. Every request runs against Dev, Staging, and Live environments to validate buyback workflows before and after each release.',
     architecture: [
-      'Aplikasi mobile multi-platform dibangun dengan Flutter dan Dart SDK',
-      'Firebase Authentication untuk otentikasi aman pengelola dan tamu',
-      'Cloud Firestore NoSQL real-time database untuk sinkronisasi instan jadwal reservasi',
-      'Komponen custom calendar interaktif dengan highlight tanggal booking aktif'
+      'Postman collection organized by endpoint group: account & locations, catalog, offers, and leads',
+      'Environment variables for Dev US, Staging US, Live US, and Live EU with a shared {{base-url}}',
+      'Header-based authentication using x-api-key and x-secret-key stored as environment secrets',
+      'Coverage of GET, POST, and PUT flows including mail-in and in-store offer checkout',
+      'Load testing of key endpoints with k6 to check performance under traffic'
     ],
-    stack: [
-      'Flutter',
-      'Dart',
-      'Firebase Auth',
-      'Cloud Firestore',
-      'Mobile Architecture'
-    ],
+    stack: ['Postman', 'REST API', 'k6', 'Git', 'ClickUp'],
     highlights: [
-      'Digunakan langsung pada operasional villa pribadi keluarga',
-      'Sinkronisasi status booking instan tanpa latency',
-      'Kalender interaktif visual untuk kemudahan reservasi tanggal'
+      'Validated 25+ partner API endpoints across four environments',
+      'Tested the full buyback flow: catalog lookup, pricing offer, checkout, and leads',
+      'Reported API defects with reproducible requests for the engineering team'
     ],
-    challenges: 'Proyek aplikasi mobile pertama; mempelajari Flutter dan reaktif state management dari nol bersama kelompok di bawah tenggat waktu akademik yang ketat.',
-    role: 'Mobile Developer & Technical Lead',
-    githubUrl: 'https://github.com/solehwahyu/villanakey',
-    isMobileApp: true,
-    demoStatusLabel: 'Aplikasi Mobile Native (Demo/APK on request)',
-    imageUrl: '/projects/villa.png',
-    imageFit: 'contain',
+    challenges: 'Keeping one collection consistent across multiple regions and environments, where data and credentials differ but the expected behavior must match.',
+    role: 'QA Engineer (June 2025 - Present)',
+    isPrivateRepo: true,
+    privateRepoReason: 'Private company API collection',
+    imageUrl: '/projects/APITesting.png',
+    imageFit: 'cover',
     featured: true,
     metrics: [
-      { label: 'Mobile Engine', value: 'Flutter & Dart' },
-      { label: 'Database Sync', value: 'Real-Time NoSQL' },
-      { label: 'State & Cloud', value: 'Firebase Suite' }
+      { label: 'Endpoints', value: '25+ Tested' },
+      { label: 'Tooling', value: 'Postman + k6' }
     ]
   },
   {
-    id: 'kalorin-ai',
-    title: 'kalorinAi',
-    subtitle: 'Platform Web Nutrisi & Tracking Kalori Berbasis Computer Vision AI',
-    category: 'fullstack',
-    summary: 'Platform pelacak nutrisi cerdas dengan pengenalan citra piring makanan berbasis AI untuk menghitung kalori, makronutrien, serta rekomendasi harian.',
-    description: 'Capstone Project Dicoding CodingCamp 2026 Powered by DBS Foundation yang dikembangkan bersama tim 6 orang (2 Data Analyst, 2 AI Engineer, 2 Fullstack). Fitur mencakup kalkulator BMI, tracking asupan harian, streak, insight AI, dan rekomendasi menu.',
+    id: 'e2e-sauce-demo',
+    title: 'E2E - SauceDemo',
+    subtitle: 'Playwright End-to-End Automation with the Page Object Model',
+    category: 'e2e-sauce-demo',
+    summary: 'A public Playwright E2E suite built with the Page Object Model, covering login, dashboard, and payout flows on the SauceDemo test site.',
+    description: 'A personal automation project built to demonstrate a clean, maintainable E2E testing structure: locators, page services, and specs kept in separate layers so the suite stays easy to extend. Covers positive and negative scenarios across the login, dashboard, and payout journeys.',
     architecture: [
-      'Client web modern menggunakan React, Vite, dan Tailwind CSS v4',
-      'Database dan layer data menggunakan Supabase dan Prisma ORM',
-      'Sistem otentikasi aman menggunakan Firebase Auth',
-      'Pipeline computer vision TensorFlow/Keras di backend Python untuk mendeteksi porsi dan nilai gizi (kalori, protein, lemak, karbohidrat)',
-      'Mesin rekomendasi harian adaptif berdasarkan target kalori pengguna'
+      'Page Object Model with locators, page services, and specs in separate folders',
+      'Reusable page service classes (LoginService, DashboardService) wrapping Playwright actions',
+      'Positive and negative test specs per flow: login, dashboard, and payout',
+      'Assertions on page title, product listings, and item descriptions',
+      'Test suite run locally with the Playwright CLI'
     ],
-    stack: [
-      'React',
-      'Vite',
-      'Tailwind CSS v4',
-      'TypeScript',
-      'Supabase',
-      'Prisma ORM',
-      'Firebase Auth',
-      'TensorFlow',
-      'Python'
-    ],
+    stack: ['Playwright', 'JavaScript', 'Page Object Model', 'Git'],
     highlights: [
-      'Capstone Project Dicoding CodingCamp 2026 Powered by DBS Foundation',
-      'Deteksi citra makanan otomatis untuk kalkulasi makronutrien instan',
-      'Sistem insight harian dan rekomendasi personal berbasis AI'
+      '7 end-to-end test cases across login, dashboard, and payout flows, all passing',
+      'Page Object Model structure with locators and services kept separate from specs',
+      'Public repository anyone can clone and run to verify the results'
     ],
-    challenges: 'Menggarap seluruh arsitektur web dan integrasi API secara mandiri di tengah jadwal padat antara perkuliahan semester aktif dan bootcamp.',
-    role: 'Lead Web Full-Stack Developer',
-    githubUrl: 'https://github.com/solehwahyu/kalorin-ai',
-    demoUrl: 'https://kalorin-ai.vercel.app',
-    imageUrl: '/projects/kalorinLogo.png',
-    imageFit: 'contain',
+    challenges: 'Structuring locators, page services, and specs into clear layers so new flows can be added without duplicating selectors or logic.',
+    role: 'QA Engineer (Personal Project)',
+    githubUrl: 'https://github.com/kingsbell/e2e-test-sauce-demo',
+    imageUrl: '/projects/Public.png',
+    imageFit: 'cover',
     featured: true,
     metrics: [
-      { label: 'Capstone Team', value: '6 Engineers' },
-      { label: 'AI Inference', value: 'TensorFlow CNN' },
-      { label: 'Web Platform', value: 'React & Vite' }
+      { label: 'Test Cases', value: '7 Passed' },
+      { label: 'Pattern', value: 'Page Object Model' },
+      { label: 'Runner', value: 'Playwright CLI' }
     ]
   }
 ];
 
 export const experienceData: ExperienceItem[] = [
   {
-    id: 'edu-widyatama',
-    period: '2023 - Sekarang',
-    role: 'S1 Teknik Informatika',
-    organization: 'Universitas Widyatama (Angkatan 2023)',
-    badge: 'Pendidikan Formal',
+    id: 'edu-unibi',
+    period: '2020 - 2026',
+    role: 'Bachelor of Informatics Engineering',
+    organization: 'Information Technology and Business University of Indonesia',
+    badge: 'Formal Education',
     category: 'education',
     description:
-      'Menempuh studi sarjana Teknik Informatika dengan pendalaman fundamental ilmu komputer, struktur data, algoritma, rekayasa perangkat lunak, dan mengambil penjurusan spesialisasi Database / Data Analyst.',
+      'Undergraduate study in Informatics Engineering, covering core computer science fundamentals, data structures, algorithms, and software engineering, with a specialization track in Data Science.',
     highlights: [
-      'Penjurusan Database & Data Analyst',
-      'Pemodelan Data Relasional & Optimasi Query SQL',
-      'Fundamental Rekayasa Perangkat Lunak & Algoritma'
+      'Data Science specialization',
+      'Automated testing fundamentals with Python & Selenium'
     ],
-    tech: ['Database Systems', 'Data Analysis', 'SQL', 'Algorithms', 'Software Engineering', 'System Design']
+    tech: ['Selenium', 'Python', 'Data Analyst', 'Algorithms', 'Software Engineering']
   },
   {
-    id: 'exp-dicoding-dbs',
-    period: 'Feb 2026 - Jul 2026',
-    role: 'Fullstack Developer (Learning Path)',
-    organization: 'Dicoding CodingCamp 2026 Powered by DBS Foundation',
-    badge: 'Intensive Bootcamp',
+    id: 'exp-digital-skola',
+    period: 'Jul 2026',
+    role: 'QA Engineer: Basic Automation & Testing',
+    organization: 'Digital Skola',
+    badge: 'Bootcamp',
     category: 'bootcamp',
     description:
-      'Program beasiswa pelatihan intensif Fullstack Developer dari Dicoding dan DBS Foundation. Membangun arsitektur frontend web modern (React & Vite), integrasi API backend type-safe, otentikasi data, dan berkolaborasi dalam Capstone Project kalorinAI.',
+      'Intensive QA Engineer bootcamp covering the fundamentals of manual and automated testing, API testing, performance testing, and mobile testing through hands-on projects.',
     highlights: [
-      'Lulusan Jalur Fullstack Developer',
-      'Integrasi REST API, State Management & Cloud DB',
-      'Kolaborasi Tim Capstone Project kalorinAI'
+      'Graduate of the QA Engineer track',
+      'Hands-on training across manual, automation, API, and performance testing'
     ],
-    tech: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma ORM', 'Tailwind CSS', 'REST API']
+    tech: ['Postman', 'Selenium', 'JavaScript', 'Git', 'JMeter', 'k6', 'REST API', 'Mobile Testing']
   },
   {
-    id: 'exp-cimart-mbkm',
-    period: 'Jul 2026 - Sekarang',
-    role: 'Full-Stack Developer',
-    organization: 'Inisiatif MBKM / KKN Tematik & Capstone Kampus Desa Cibenda',
-    badge: 'MBKM / Capstone Kampus',
+    id: 'exp-reusely',
+    period: 'Jun 2025 - Nov 2026',
+    role: 'QA Engineer',
+    organization: 'Reusely',
+    badge: 'Full-time',
     category: 'project',
     description:
-      'Inisiatif MBKM / KKN Tematik resmi dari kampus yang menjadi Capstone Project untuk digitalisasi komoditas ekonomi warga Desa Cibenda, Pangandaran. Dikerjakan secara mandiri dari perancangan arsitektur sistem, integrasi payment gateway Midtrans, notifikasi FCM, hingga deployment produksi.',
+      'Working as a QA Engineer at Reusely, a recommerce platform for device buyback and trade-in. Responsible for testing the entire application suite: end-to-end automation, API testing, and load testing, with bug reporting and tracking inside the sprint cycle.',
     highlights: [
-      'Mandat Resmi Pimpinan Kampus & Perangkat Desa',
-      'Development Arsitektur End-to-End',
-      'Integrasi Payment Gateway Midtrans & WebSockets'
+      'End-to-end & API test automation',
+      'Bug reporting and sprint tracking with the engineering team'
     ],
-    tech: ['Laravel', 'Inertia.js', 'React', 'MySQL', 'Docker', 'WebSockets', 'Midtrans', 'Leaflet']
-  },
-  {
-    id: 'exp-rework-cybersecurity',
-    period: 'Agu 2026 - Des 2026',
-    role: 'Cyber Security Trainee (Red Team Focus)',
-    organization: 'Cyber Security Bootcamp by Rework Academy',
-    badge: 'Cyber Security Bootcamp',
-    category: 'security',
-    description:
-      'Pelatihan intensif keamanan siber komprehensif mulai dari fundamental cybersecurity, vulnerability assessment, web application penetration testing (OWASP Top 10), network penetration testing, bug bounty hunting, hingga penyusunan security reporting profesional. Fokus mendalam pada Red Team (Offensive Security) dengan pemahaman komplementer Blue Team (Defensive) dan Purple Team.',
-    highlights: [
-      'Web Application & Network Penetration Testing',
-      'Metodologi Bug Bounty & Eksploitasi OWASP Top 10',
-      'Vulnerability Assessment & Security Reporting',
-      'Fokus Offensive Red Team dengan Pemahaman Blue/Purple Team'
-    ],
-    tech: ['Web App Pentesting', 'Network Security', 'OWASP Top 10', 'Bug Bounty', 'Red Teaming', 'Linux Security', 'Security Reporting']
+    tech: ['Playwright', 'API Testing', 'Postman', 'Git', 'k6', 'REST API']
   }
 ];

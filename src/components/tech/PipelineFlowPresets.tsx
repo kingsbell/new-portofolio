@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layers, Globe, Smartphone, Server, Terminal, Lock } from 'lucide-react';
+import { Layers, TestTube2, Server, Database, GitBranch } from 'lucide-react';
 
-export type FlowDomainId = 'all' | 'web' | 'mobile' | 'backend' | 'devops' | 'cybersecurity';
+export type FlowDomainId = 'all' | 'automation' | 'api' | 'tools' | 'sql';
 
 interface PipelineFlowPresetsProps {
   activeDomain: FlowDomainId;
@@ -21,38 +21,32 @@ export const PipelineFlowPresets: React.FC<PipelineFlowPresetsProps> = ({
   }[] = [
     {
       id: 'all',
-      label: 'Semua Stack',
+      label: 'All Stack',
       icon: Layers,
-      tag: 'Semua'
+      tag: 'All'
     },
     {
-      id: 'web',
-      label: 'Frontend / Web',
-      icon: Globe,
-      tag: 'Web'
+      id: 'automation',
+      label: 'Test Automation',
+      icon: TestTube2,
+      tag: 'Automation'
     },
     {
-      id: 'mobile',
-      label: 'Mobile App',
-      icon: Smartphone,
-      tag: 'Mobile'
-    },
-    {
-      id: 'backend',
-      label: 'Backend & DB',
+      id: 'api',
+      label: 'API & Performance',
       icon: Server,
-      tag: 'Backend'
+      tag: 'API'
     },
     {
-      id: 'devops',
-      label: 'DevOps & Linux',
-      icon: Terminal,
-      tag: 'DevOps'
+      id: 'tools',
+      label: 'Workflow & Tools',
+      icon: GitBranch,
+      tag: 'Workflow'
     },
     {
-      id: 'cybersecurity',
-      label: 'Cyber Security',
-      icon: Lock,
+      id: 'sql',
+      label: 'SQL Testing',
+      icon: Database,
       tag: 'Coming Soon',
       isComingSoon: true
     }
@@ -62,15 +56,15 @@ export const PipelineFlowPresets: React.FC<PipelineFlowPresetsProps> = ({
     <div className="space-y-2.5">
       <div className="flex items-center justify-between">
         <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0369a1]">
-          Kategori
+          Categories
         </span>
         <span className="text-[11px] font-mono text-[#64748b]">
-          Pilih kategori stack
+          Choose a stack category
         </span>
       </div>
 
       {/* domain filter buttons */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
         {domains.map((domain) => {
           const Icon = domain.icon;
           const isActive = activeDomain === domain.id;
@@ -79,7 +73,7 @@ export const PipelineFlowPresets: React.FC<PipelineFlowPresetsProps> = ({
             return (
               <div
                 key={domain.id}
-                title="Modul Cyber Security sedang dalam tahap persiapan"
+                title="SQL Testing is still in preparation - not yet part of the active stack"
                 className="p-3 rounded-2xl border-2 border-dashed border-[#94a3b8] bg-[#f1f5f9]/70 text-left opacity-50 cursor-not-allowed select-none flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between">
