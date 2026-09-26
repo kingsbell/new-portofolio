@@ -9,10 +9,11 @@ Template ini sepenuhnya **open source (Lisensi MIT)** dan siap dipakai untuk por
 ## Fitur Utama
 
 - **Fisika Air Canvas Real-Time**: Simulasi ombak laut, gelembung udara mengapung, ikan berenang, dan riak air interaktif saat diklik murni berbasis HTML5 2D Canvas (tanpa library WebGL berat).
-- **Karakter Pantai Interaktif**: Bebek karet yang bisa di-drag dan dilempar ke air, kepiting pantai, serta burung camar terbang dengan dialog jenaka yang saling terhubung.
+- **Karakter Pantai Interaktif**: Bebek karet yang bisa di-drag dan dilempar ke air, burung camar terbang dengan dialog jenaka, serta ilustrasi lapangan voli pasir dengan animasi rally bola berjalan.
 - **Showcase Proyek Flagship**: Tampilan kartu proyek interaktif lengkap dengan modal studi kasus dan metrik teknis.
 - **Visualisasi Tech Stack Pipeline**: Pipeline grafis interaktif untuk memamerkan tools dan alur teknologi yang dikuasai.
 - **Milestone Timeline**: Rekam jejak pengalaman dan pendidikan dengan progress bar vertikal yang terisi otomatis mengikuti posisi scroll.
+- **Aktivitas GitHub Real-Time**: Heatmap kontribusi GitHub yang sinkron otomatis dengan riwayat commit publik akun Anda.
 - **Kontak Bento Dock**: Terminal kontak interaktif dengan fitur 3D card flip untuk catatan developer.
 - **Desain Neo-Brutalist Coastal**: Perpaduan palet warna laut tropis, pasir pantai hangat, tipografi monospace tegas, dan drop-shadow solid.
 
@@ -71,6 +72,8 @@ template-porto-pantai/
 ├── public/              # Aset statis, ikon, avatar, dan file CV
 ├── src/
 │   ├── components/      # Komponen antarmuka modular
+│   │   ├── activity/    # Heatmap aktivitas kontribusi GitHub
+│   │   ├── common/      # Komponen bersama (logo brand, dll)
 │   │   ├── contact/     # Section kontak, bento dock & ocean canvas
 │   │   ├── hero/        # Hero section, physics stage, karakter pantai
 │   │   ├── journey/     # Rekam jejak & timeline progress
@@ -78,9 +81,9 @@ template-porto-pantai/
 │   │   ├── profile/     # Profil teknis & stage arsitektur
 │   │   ├── projects/    # Showcase proyek, dock filter, modal kasus
 │   │   ├── tech/        # Tech stack pipeline & dekorasi pantai
-│   │   └── ui/          # Komponen tombol taktil & notifikasi
+│   │   └── ui/          # Komponen tombol & kartu taktil
 │   ├── data/            # Data terpusat (portfolioData.ts)
-│   ├── hooks/           # Custom hooks (Lenis scroll, card tilt, dll)
+│   ├── hooks/           # Custom hooks (Lenis scroll, card tilt, GitHub contributions, dll)
 │   ├── types/           # Definisi TypeScript
 │   ├── App.tsx          # Komponen utama halaman
 │   ├── main.tsx         # Entry point aplikasi

@@ -38,7 +38,6 @@ export interface TechItem {
   layer: TechLayer;
   iconKey: string;
   color: string;
-  experienceYears?: string;
   usageContext: string;
   projectLinks?: string[];
   roleTag?: string;

@@ -9,9 +9,9 @@ export function renderWaterBody(
   height: number,
   depthLevel: 1 | 2 | 3 | 4
 ): void {
-  let waterTop = '#38bdf8';
-  let waterMid = '#0284c7';
-  let waterBottom = '#02587a';
+  let waterTop: string;
+  let waterMid: string;
+  let waterBottom: string;
 
   if (depthLevel === 1) {
     waterTop = '#38bdf8';

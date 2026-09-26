@@ -3,7 +3,7 @@ import type { ProfileData, Project, TechItem, ExperienceItem } from '../types/po
 export const profileData: ProfileData = {
   name: 'Soleh Wahyu Pratama',
   tagline: 'Quality Assurance Engineer',
-  education: 'Informatics Engineering • Informatics and Business University of Indonesia',
+  education: 'Informatics and Business University of Indonesia',
   status: 'Available for QA & Testing Roles',
   bio: 'Informatics engineering undergraduate passionate about software quality and reliability. Experienced in designing and executing automated test suites, performing API and regression testing, and collaborating in agile teams to ship bug-free products.',
   experienceStart: 'Active QA Engineer',

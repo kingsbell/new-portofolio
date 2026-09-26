@@ -12,32 +12,6 @@ interface SwimmingDuckProps {
   onDuckWaddle?: (duckRect: DOMRect) => void;
 }
 
-const DUCK_DIALOGUES = [
-  '♪ Kwek kwek, asyiknya berenang di laut lepas ~',
-  'Air lautnya segar banget hari ini!',
-  'Tadi kulihat si kepiting lagi pemanasan servis di lapangan voli pasir!',
-  'Si kepiting kalau main voli smash-nya pakai capit, curang tapi jago kwek!',
-  'Burung camar jadi wasit voli di atas, tapi awas suka nyamber bola!',
-  'Kepiting! Habis latihan voli pantai jangan lupa nyebur renang bareng di sini!',
-  'Lapangan voli pasir di samping lagi rame turnamen kepiting!',
-  'Kwek! Kalau ada bug di kode, suruh ngobrol sama bebek karet!',
-  'Berenang santai sambil nemenin kamu lihat portofolio Reyhand ~',
-  'Ombaknya tenang banget, cocok buat santai di pantai!',
-  'Awas kecipratan air ya kalau aku lagi ngebut berenang!'
-];
-
-const createShuffledDeck = (items: string[], lastItem?: string): string[] => {
-  const deck = [...items];
-  for (let i = deck.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [deck[i], deck[j]] = [deck[j], deck[i]];
-  }
-  if (lastItem && deck[0] === lastItem && deck.length > 1) {
-    [deck[0], deck[deck.length - 1]] = [deck[deck.length - 1], deck[0]];
-  }
-  return deck;
-};
-
 export const SwimmingDuck: React.FC<SwimmingDuckProps> = ({
   expression = 'normal',
   onDuckDrop,
@@ -48,10 +22,6 @@ export const SwimmingDuck: React.FC<SwimmingDuckProps> = ({
   const [isGrabbed, setIsGrabbed] = useState(false);
   const [isWaddling, setIsWaddling] = useState(false);
   const [isBlinking, setIsBlinking] = useState(false);
-  const [currentQuip, setCurrentQuip] = useState<string | null>(null);
-
-  const deckRef = useRef<string[]>(createShuffledDeck(DUCK_DIALOGUES));
-  const lastQuipRef = useRef<string>('');
 
   const x = useMotionValue(-120);
   const y = useMotionValue(0);
@@ -80,34 +50,6 @@ export const SwimmingDuck: React.FC<SwimmingDuckProps> = ({
 
     return () => clearInterval(blinkInterval);
   }, []);
-
-  useEffect(() => {
-    if (isGrabbed || isWaddling) {
-      setCurrentQuip(null);
-      return;
-    }
-
-    const quipInterval = setInterval(() => {
-      if (duckRef.current) {
-        const rect = duckRef.current.getBoundingClientRect();
-        if (rect.right > 90 && rect.left < window.innerWidth - 90) {
-          if (deckRef.current.length === 0) {
-            deckRef.current = createShuffledDeck(DUCK_DIALOGUES, lastQuipRef.current);
-          }
-
-          const nextQuip = deckRef.current.pop() || DUCK_DIALOGUES[0];
-          lastQuipRef.current = nextQuip;
-          setCurrentQuip(nextQuip);
-
-          setTimeout(() => {
-            setCurrentQuip(null);
-          }, 3200);
-        }
-      }
-    }, 7200);
-
-    return () => clearInterval(quipInterval);
-  }, [isGrabbed, isWaddling]);
 
   // swimming loop across the screen with collision check
   useEffect(() => {
@@ -190,7 +132,6 @@ export const SwimmingDuck: React.FC<SwimmingDuckProps> = ({
   const handleDragStart = () => {
     setIsGrabbed(true);
     setIsWaddling(false);
-    setCurrentQuip(null);
   };
 
   const handleDragEnd = (_e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
@@ -412,17 +353,6 @@ export const SwimmingDuck: React.FC<SwimmingDuckProps> = ({
         {isWaddling && currentExpression !== 'impact' && (
           <motion.div className="absolute -top-7 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-[#38bdf8] text-white text-[10px] font-extrabold shadow-lg border border-[#0284c7] whitespace-nowrap">
             BACK TO WATER!
-          </motion.div>
-        )}
-
-        {!isGrabbed && !isWaddling && currentExpression !== 'impact' && currentQuip && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.75, y: 6 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.75, y: 6 }}
-            className="absolute -top-10 left-1/2 -translate-x-1/2 px-3.5 py-1.5 rounded-2xl bg-white/95 text-[#02587a] text-xs font-bold shadow-xl border border-[#38bdf8] whitespace-nowrap flex items-center gap-1.5 backdrop-blur-md"
-          >
-            <span className="drop-shadow-xs">{currentQuip}</span>
           </motion.div>
         )}
       </motion.div>

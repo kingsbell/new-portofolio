@@ -1,30 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 
-const SEAGULL_DIALOGUES = [
-  'Kwekk! Ada kentang goreng ga di bawah?',
-  'Dari atas kulihat smash voli si kepiting kencang banget!',
-  'Peluit wasit siap ditiup! Awas bola volinya nyangkut di pohon kelapa!',
-  'Bebek yang di air, oper balik bola voli kepiting kalau nyebur ya!',
-  'Skor voli pantai: Tim Kepiting 10 - Angin Pantai 8!',
-  'Wasit udara melaporkan: Pertandingan voli berjalan seru dan adil!',
-  'Langit cerah banget buat terbang santai di atas pantai ~',
-  'Arus angin hari ini enak banget buat meluncur!',
-  'Portofolio yang keren terlihat jelas dari atas awan sini!'
-];
-
-const createShuffledDeck = (items: string[], lastItem?: string): string[] => {
-  const deck = [...items];
-  for (let i = deck.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [deck[i], deck[j]] = [deck[j], deck[i]];
-  }
-  if (lastItem && deck[0] === lastItem && deck.length > 1) {
-    [deck[0], deck[deck.length - 1]] = [deck[deck.length - 1], deck[0]];
-  }
-  return deck;
-};
-
 const ALTITUDE_ZONES = [
   { min: 10, max: 24 },
   { min: 28, max: 36 },
@@ -34,13 +10,9 @@ const ALTITUDE_ZONES = [
 export const FlyingSeagull: React.FC = () => {
   const [direction, setDirection] = useState<'ltr' | 'rtl'>('ltr');
   const [altitudePercent, setAltitudePercent] = useState<number>(14);
-  const [currentQuip, setCurrentQuip] = useState<string | null>(null);
 
   const x = useMotionValue(-160);
   const seagullRef = useRef<HTMLDivElement | null>(null);
-
-  const deckRef = useRef<string[]>(createShuffledDeck(SEAGULL_DIALOGUES));
-  const lastQuipRef = useRef<string>('');
 
   useEffect(() => {
     let animId: number;
@@ -88,29 +60,6 @@ export const FlyingSeagull: React.FC = () => {
     animId = requestAnimationFrame(flightLoop);
     return () => cancelAnimationFrame(animId);
   }, [direction, x]);
-
-  useEffect(() => {
-    const quipInterval = setInterval(() => {
-      if (seagullRef.current) {
-        const rect = seagullRef.current.getBoundingClientRect();
-        if (rect.right > 100 && rect.left < window.innerWidth - 100) {
-          if (deckRef.current.length === 0) {
-            deckRef.current = createShuffledDeck(SEAGULL_DIALOGUES, lastQuipRef.current);
-          }
-
-          const nextQuip = deckRef.current.pop() || SEAGULL_DIALOGUES[0];
-          lastQuipRef.current = nextQuip;
-          setCurrentQuip(nextQuip);
-
-          setTimeout(() => {
-            setCurrentQuip(null);
-          }, 3000);
-        }
-      }
-    }, 8500);
-
-    return () => clearInterval(quipInterval);
-  }, []);
 
   return (
     <motion.div
@@ -195,18 +144,6 @@ export const FlyingSeagull: React.FC = () => {
               fill="#475569"
             />
           </svg>
-
-          {currentQuip && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.75, y: 6 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.75, y: 6 }}
-              className={`absolute -top-9 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white/95 text-[#0284c7] text-[11px] font-bold shadow-lg border border-[#38bdf8] whitespace-nowrap backdrop-blur-xs flex items-center gap-1 ${direction === 'rtl' ? '-scale-x-100' : 'scale-x-100'
-                }`}
-            >
-              <span>{currentQuip}</span>
-            </motion.div>
-          )}
         </motion.div>
       </div>
     </motion.div>
