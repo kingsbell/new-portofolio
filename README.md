@@ -1,105 +1,46 @@
-# Template Portfolio Pantai 🏖️🌊
+<h2 data-importer="text" align="left">Hi 👋! My name is Soleh Wahyu Pratama and I'm a QA Engineer, from Bandung, Indonesia</h2>
 
-Template website portofolio interaktif bertema pesisir pantai dan neo-brutalisme modern. Dilengkapi dengan simulasi ombak 2D canvas, fisika gerak dinamis, karakter pantai interaktif, dan arsitektur kode React 19 + TypeScript + Vite yang rapi.
+###
 
-Template ini sepenuhnya **open source (Lisensi MIT)** dan siap dipakai untuk portofolio pribadi Anda.
+<div data-importer="stats" align="center">
+  <img src="https://raw.githubusercontent.com/kingsbell/kingsbell/stats-output/stats.svg?hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph"  />
+  <img src="https://raw.githubusercontent.com/kingsbell/kingsbell/languages-output/languages.svg?locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph"  />
+</div>
 
----
+###
 
-## Fitur Utama
+<img data-importer="image" align="right" height="150" src="https://i.imgflip.com/65efzo.gif"  />
 
-- **Fisika Air Canvas Real-Time**: Simulasi ombak laut, gelembung udara mengapung, ikan berenang, dan riak air interaktif saat diklik murni berbasis HTML5 2D Canvas (tanpa library WebGL berat).
-- **Karakter Pantai Interaktif**: Bebek karet yang bisa di-drag dan dilempar ke air, burung camar terbang dengan dialog jenaka, serta ilustrasi lapangan voli pasir dengan animasi rally bola berjalan.
-- **Showcase Proyek Flagship**: Tampilan kartu proyek interaktif lengkap dengan modal studi kasus dan metrik teknis.
-- **Visualisasi Tech Stack Pipeline**: Pipeline grafis interaktif untuk memamerkan tools dan alur teknologi yang dikuasai.
-- **Milestone Timeline**: Rekam jejak pengalaman dan pendidikan dengan progress bar vertikal yang terisi otomatis mengikuti posisi scroll.
-- **Aktivitas GitHub Real-Time**: Heatmap kontribusi GitHub yang sinkron otomatis dengan riwayat commit publik akun Anda.
-- **Kontak Bento Dock**: Terminal kontak interaktif dengan fitur 3D card flip untuk catatan developer.
-- **Desain Neo-Brutalist Coastal**: Perpaduan palet warna laut tropis, pasir pantai hangat, tipografi monospace tegas, dan drop-shadow solid.
+###
 
----
+<div data-importer="techs" align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" height="30" alt="chrome logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" height="30" alt="grafana logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="30" alt="vscode logo"  />
+</div>
 
-## Tech Stack
+###
 
-- **Framework**: React 19
-- **Language**: TypeScript
-- **Build Tool**: Vite 8
-- **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`)
-- **Motion**: Framer Motion
-- **Smooth Scrolling**: Lenis
-- **Icons**: Lucide React & Simple Icons
+<div data-importer="socials" align="left">
+  <a href="https://www.instagram.com/solehwhyp/" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=Instagram&logo=instagram&label=solehwahyup&color=E4405F&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="instagram logo"  />
+  </a>
+  <a href="mailto:solehwahyup5@gmail.com?subject=Inquiry%3A%20QA%20Engineer%20Opportunity&body=Hi%20Soleh%2C%0A%0AI'd%20like%20to%20discuss%3A%20QA%20Engineer%20Role.%0A%0A%5BWrite%20your%20message%20here%5D%0A%0ABest%20regards%2C%0A" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&label=solehwahyup5&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo"  />
+  </a>
+  <a href="https://www.linkedin.com/in/soleh-wahyu-p-50a76a201/" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=Soleh%20Wahyu%20Pratama&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="linkedin logo"  />
+  </a>
+</div>
 
----
+###
 
-## Cara Menggunakan Template Ini
+<br clear="both">
 
-### 1. Clone Repository
-```bash
-git clone https://github.com/kingsbell/template-porto-pantai.git
-cd template-porto-pantai
-```
+<img data-importer="snake" src="https://raw.githubusercontent.com/kingsbell/kingsbell/snake-output/snake.svg" alt="Snake animation" />
 
-### 2. Install Dependensi
-```bash
-npm install
-```
-
-### 3. Sesuaikan Data Anda
-Semua data teks, proyek, kontak, dan keahlian terpusat rapi dalam satu file data:
-- Buka file `src/data/portfolioData.ts`.
-- Ganti nama, bio, data pendidikan, kontak sosial media, dan riwayat pengalaman dengan data Anda sendiri.
-- Ganti avatar profil: taruh foto Anda di `public/` dan update `avatarUrl` di `src/data/portfolioData.ts`.
-- Ganti file CV: taruh file PDF resume Anda di `public/cv.pdf`.
-
-### 4. Jalankan Development Server
-```bash
-npm run dev
-```
-Buka browser di `http://localhost:5173`.
-
-### 5. Build untuk Produksi
-```bash
-npm run build
-```
-Hasil build siap deploy akan langsung berada di folder `dist/`.
-
----
-
-## Struktur Folder
-
-```text
-template-porto-pantai/
-├── public/              # Aset statis, ikon, avatar, dan file CV
-├── src/
-│   ├── components/      # Komponen antarmuka modular
-│   │   ├── activity/    # Heatmap aktivitas kontribusi GitHub
-│   │   ├── common/      # Komponen bersama (logo brand, dll)
-│   │   ├── contact/     # Section kontak, bento dock & ocean canvas
-│   │   ├── hero/        # Hero section, physics stage, karakter pantai
-│   │   ├── journey/     # Rekam jejak & timeline progress
-│   │   ├── navigation/  # Navbar floating
-│   │   ├── profile/     # Profil teknis & stage arsitektur
-│   │   ├── projects/    # Showcase proyek, dock filter, modal kasus
-│   │   ├── tech/        # Tech stack pipeline & dekorasi pantai
-│   │   └── ui/          # Komponen tombol & kartu taktil
-│   ├── data/            # Data terpusat (portfolioData.ts)
-│   ├── hooks/           # Custom hooks (Lenis scroll, card tilt, GitHub contributions, dll)
-│   ├── types/           # Definisi TypeScript
-│   ├── App.tsx          # Komponen utama halaman
-│   ├── main.tsx         # Entry point aplikasi
-│   └── index.css        # Konfigurasi Tailwind CSS v4
-├── package.json
-└── vite.config.ts
-```
-
----
-
-## Deploy ke Vercel / Netlify
-
-Website ini adalah Single Page Application (SPA) murni berbasis Vite. Anda bisa langsung menautkan repository ini ke Vercel atau Netlify tanpa konfigurasi server tambahan.
-
----
-
-## Lisensi
-
-Dirilis di bawah lisensi [MIT](LICENSE). Bebas digunakan, dimodifikasi, dan didistribusikan untuk keperluan pribadi maupun komersial. Dibuat dengan cinta oleh [Soleh Wahyu Pratama](https://github.com/kingsbell).
+###
