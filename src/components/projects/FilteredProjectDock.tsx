@@ -67,8 +67,7 @@ export const FilteredProjectDock: React.FC<FilteredProjectDockProps> = ({
 
           {/* category selection */}
           <div
-            className="grid sm:flex sm:items-center gap-1.5 sm:gap-2 w-full sm:w-auto"
-            style={{ gridTemplateColumns: `repeat(${categories.length}, minmax(0, 1fr))` }}
+            className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar w-full sm:w-auto"
           >
             {categories.map((cat) => {
               const shortLabel = cat.id === 'all' ? 'All' : PROJECT_CATEGORY_LABELS[cat.id].short;
@@ -83,7 +82,7 @@ export const FilteredProjectDock: React.FC<FilteredProjectDockProps> = ({
                       cat.id === 'all' ? projects : projects.filter((p) => p.category === cat.id);
                     if (nextFiltered[0]) setActiveProjectId(nextFiltered[0].id);
                   }}
-                  className={`flex items-center justify-center gap-1.5 px-2 py-2 sm:px-3.5 sm:py-1.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-mono font-black transition-all cursor-pointer border-2 border-[#0f172a] w-full sm:w-auto shrink-0 ${selectedCategory === cat.id
+                  className={`flex items-center justify-center gap-1.5 px-2.5 py-2 sm:px-3.5 sm:py-1.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-mono font-black transition-all cursor-pointer border-2 border-[#0f172a] shrink-0 whitespace-nowrap ${selectedCategory === cat.id
                     ? 'bg-[#0284c7] text-white shadow-[2px_2px_0px_#0f172a] sm:shadow-[3px_3px_0px_#0f172a] -translate-y-0.5'
                     : 'bg-[#fffdf5] hover:bg-[#fff9d4] text-[#0f172a] shadow-[1.5px_1.5px_0px_#0f172a] sm:shadow-[2px_2px_0px_#0f172a]'
                     }`}

@@ -22,7 +22,8 @@ export const AnimatedOceanSlideBackground: React.FC<AnimatedOceanSlideBackground
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animId: number;
+    let animId: number | null = null;
+    let isVisible = true;
     let time = 0;
 
     const handleResize = () => {
@@ -57,13 +58,28 @@ export const AnimatedOceanSlideBackground: React.FC<AnimatedOceanSlideBackground
       // bubbles
       renderBubbles(ctx, width, waterMinY, waterMaxY, time);
 
-      animId = requestAnimationFrame(render);
+      animId = isVisible ? requestAnimationFrame(render) : null;
     };
 
-    animId = requestAnimationFrame(render);
+    const startLoop = () => {
+      if (animId == null) animId = requestAnimationFrame(render);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) startLoop();
+      },
+      { rootMargin: '200px 0px' }
+    );
+    observer.observe(canvas);
+
+    startLoop();
 
     return () => {
-      cancelAnimationFrame(animId);
+      isVisible = false;
+      observer.disconnect();
+      if (animId != null) cancelAnimationFrame(animId);
       window.removeEventListener('resize', handleResize);
     };
   }, [depthLevel]);

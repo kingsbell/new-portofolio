@@ -108,6 +108,7 @@ export const OceanHeroCanvas = forwardRef<OceanHeroHandle, { className?: string 
       if (!ctx) return;
 
       let isRunning = true;
+      let isVisible = true;
 
       const handleResize = () => {
         if (!canvas) return;
@@ -278,14 +279,30 @@ export const OceanHeroCanvas = forwardRef<OceanHeroHandle, { className?: string 
           ctx.restore();
         }
 
-        animRef.current = requestAnimationFrame(render);
+        animRef.current = isVisible ? requestAnimationFrame(render) : null;
       };
 
-      animRef.current = requestAnimationFrame(render);
+      const startLoop = () => {
+        if (animRef.current == null) animRef.current = requestAnimationFrame(render);
+      };
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          isVisible = entry.isIntersecting;
+          if (isVisible) startLoop();
+        },
+        { rootMargin: '200px 0px' }
+      );
+      observer.observe(canvas);
+
+      startLoop();
 
       return () => {
         isRunning = false;
+        isVisible = false;
+        observer.disconnect();
         if (animRef.current) cancelAnimationFrame(animRef.current);
+        animRef.current = null;
         window.removeEventListener('resize', handleResize);
       };
     }, []);

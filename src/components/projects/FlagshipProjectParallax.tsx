@@ -60,7 +60,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
       <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-12 my-auto py-2 sm:py-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-12 items-center">
           {/* project details card */}
-          <div className="lg:col-span-6 p-4 sm:p-7 sm:p-9 rounded-2xl sm:rounded-[32px] bg-[#fffdf5] border-2 border-[#0f172a] shadow-[5px_5px_0px_#0f172a] sm:shadow-[8px_8px_0px_#0f172a] space-y-3 sm:space-y-5">
+          <div className="lg:col-span-6 p-4 sm:p-7 lg:p-9 rounded-2xl sm:rounded-[32px] bg-[#fffdf5] border-2 border-[#0f172a] shadow-[5px_5px_0px_#0f172a] sm:shadow-[8px_8px_0px_#0f172a] space-y-3 sm:space-y-5">
             {/* title and subtitle */}
             <div className="space-y-1">
               <h3 className="text-xl sm:text-3xl lg:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.08]">

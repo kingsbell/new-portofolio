@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import { profileData } from '../../data/portfolioData';
 import { useCardTilt } from '../../hooks/useCardTilt';
-import profilePhoto from '../../assets/EB7DCC08-CA9A-4EB9-903B-B0EA2C49CBBB.png';
+import profilePhoto from '../../assets/profile-photo.jpg';
 
 interface ProfilePhotoCardProps {
   isFlooded: boolean;
